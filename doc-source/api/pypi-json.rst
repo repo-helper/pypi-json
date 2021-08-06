@@ -26,3 +26,5 @@
 		f"{platform.python_implementation()}/{platform.python_version()}",
 		#  ^^^ e.g. CPython                   ^^^ e.g. 3.8.10
 		])
+
+	This global attribute should not be changed by other code.
