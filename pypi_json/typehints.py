@@ -37,8 +37,6 @@ import typing
 if typing.TYPE_CHECKING:
 	# 3rd party
 	from typing_extensions import TypedDict
-elif hasattr(typing, "TypedDict"):  # pragma: no cover (<py38)
-	TypedDict = typing.TypedDict  # noqa: TYP006
 else:  # pragma: no cover
 	try:
 		# 3rd party

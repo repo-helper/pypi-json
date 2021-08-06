@@ -15,3 +15,4 @@ sphinx-tabs>=1.1.13
 sphinx-toolbox>=2.13.0b3
 sphinxemoji>=0.1.6
 toctree-plus>=0.5.0
+typing-extensions>=3.10.0.0
