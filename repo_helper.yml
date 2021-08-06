@@ -12,8 +12,8 @@ license: 'MIT'
 short_desc: 'PyPI JSON API client library '
 
 use_whey: true
-#min_coverage: 98
-#docs_fail_on_warning: true
+min_coverage: 99
+docs_fail_on_warning: true
 sphinx_html_theme: furo
 mypy_version: "0.910"
 
@@ -30,7 +30,7 @@ conda_channels:
  - conda-forge
 
 sphinx_conf_epilogue:
-# - nitpicky = True
+ - nitpicky = True
  - autosummary_widths_builders = ["latex"]
 
 keywords:
@@ -51,3 +51,8 @@ exclude_files:
 
 mypy_deps:
  - types-requests
+
+classifiers:
+ - 'Development Status :: 4 - Beta'
+ - 'Intended Audience :: Developers'
+ - 'Topic :: Software Development :: Libraries :: Python Modules'

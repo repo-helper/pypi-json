@@ -77,4 +77,5 @@ def setup(app):
 	app.connect("config-inited", lambda app, config: better_header_layout(config))
 
 
+nitpicky = True
 autosummary_widths_builders = ["latex"]
