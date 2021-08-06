@@ -157,17 +157,10 @@ class DistributionPackageDict(TypedDict):
 
 	packagetype: str
 	"""
-	The type of the package, or :py:obj:`None` if the filename cannot be parsed.
+	The distribution package type.
 
-	The recognized package types are:
-
-	* ``'dumb'``
-	* ``'egg'``
-	* ``'msi'``
-	* ``'rpm'``
-	* ``'sdist'``
-	* ``'wheel'``
-	* ``'wininst'``
+	Possible values include ``'bdist_wheel'``, ``'sdist'``, ``'bdist_wininst'``, ``'bdist_egg'``, ``'bdist_msi'``,
+	``'bdist_dumb'``, ``'bdist_rpm'``, and ``'bdist_dmg'``.
 	"""
 
 	#: Either ``'source'`` or a :pep:`425` Python tag.
