@@ -4,7 +4,7 @@ build-backend = "whey"
 
 [project]
 name = "pypi-json"
-version = "0.1.0"
+version = "0.1.1"
 description = "PyPI JSON API client library"
 readme = "README.rst"
 keywords = [ "json", "packaging", "pypi", "warehouse",]
