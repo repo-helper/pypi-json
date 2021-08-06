@@ -42,7 +42,8 @@ elif hasattr(typing, "TypedDict"):  # pragma: no cover (<py38)
 else:  # pragma: no cover
 	try:
 		# 3rd party
-		from typing_extensions import TypedDict
+		import typing_extensions
+		TypedDict = typing_extensions.TypedDict
 	except ImportError:
 		TypedDict = dict
 
