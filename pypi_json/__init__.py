@@ -67,6 +67,24 @@ USER_AGENT: str = ' '.join([
 class ProjectMetadata(NamedTuple):
 	"""
 	Represents a project's metadata from the PyPI JSON API.
+
+	:param info: Generic information about a specific version of a project.
+
+	:bold-title:`Attributes:`
+
+	.. autosummary::
+
+		~pypi_json.ProjectMetadata.name
+		~pypi_json.ProjectMetadata.version
+
+	**Methods:**
+
+	.. autosummary::
+
+		~pypi_json.ProjectMetadata.get_latest_version
+		~pypi_json.ProjectMetadata.get_releases_with_digests
+		~pypi_json.ProjectMetadata.get_releases
+		~pypi_json.ProjectMetadata.get_wheel_tag_mapping
 	"""
 
 	#: Generic information about a specific version of a project.
@@ -206,6 +224,8 @@ class PyPIJSON:
 	:param session: Optional :class:`requests.Session` object to use instead of creating a fresh one.
 
 	.. _another authentication object accepted by requests: https://requests.readthedocs.io/en/master/user/authentication/
+
+	.. latex:clearpage::
 	"""
 
 	timeout: ClassVar[int] = 10

@@ -7,11 +7,15 @@
 	:no-members:
 	:autosummary-members:
 
+.. autosummary-widths:: 40/100
+
 .. autoclass:: pypi_json.PyPIJSON
 	:member-order: bysource
+	:no-show-inheritance:
 
 .. autonamedtuple:: pypi_json.ProjectMetadata
 	:member-order: bysource
+	:exclude-members: __repr__
 
 .. autovariable:: pypi_json.USER_AGENT
 	:no-value:
