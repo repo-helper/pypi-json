@@ -33,7 +33,7 @@ PyPI JSON API client library.
 
 # stdlib
 import platform
-from typing import Any, Dict, List, NamedTuple, Optional, Tuple, Union
+from typing import Any, ClassVar, Dict, List, NamedTuple, Optional, Tuple, Union
 from urllib.parse import urlparse, urlunparse
 
 # 3rd party
@@ -44,7 +44,6 @@ from packaging.requirements import InvalidRequirement
 from packaging.tags import Tag
 from packaging.utils import canonicalize_name, parse_wheel_filename
 from packaging.version import Version
-from requests import HTTPError
 
 # this package
 from pypi_json.typehints import DistributionPackageDict, FileURL, ProjectInfoDict, Self
@@ -208,6 +207,13 @@ class PyPIJSON:
 	.. _another authentication object accepted by requests: https://requests.readthedocs.io/en/master/user/authentication/
 	"""
 
+	timeout: ClassVar[int] = 10
+	"""
+	The timeout for HTTP requests, in seconds.
+
+	.. versionadded:: 0.1.1
+	"""
+
 	endpoint: TrailingRequestsURL
 	"""
 	The :class:`apeye.requests_url.TrailingRequestsURL` object
@@ -277,7 +283,7 @@ class PyPIJSON:
 		else:
 			query_url = self.endpoint / project / str(version) / "json"
 
-		response: requests.Response = query_url.get()
+		response: requests.Response = query_url.get(timeout=self.timeout)
 
 		if response.status_code == 404:
 			if version is None:
@@ -285,7 +291,7 @@ class PyPIJSON:
 			else:
 				raise InvalidRequirement(f"No such project/version {project!r} {str(version)}")
 		elif response.status_code != 200:
-			raise HTTPError(
+			raise requests.HTTPError(
 					f"An error occurred when obtaining project metadata for {project!r}: "
 					f"HTTP Status {response.status_code}",
 					response=response,
