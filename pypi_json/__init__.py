@@ -196,8 +196,9 @@ class PyPIJSON:
 
 	:param endpoint: The base URL of the JSON API to query;
 		defaults to the base URL for PyPI's simple API.
-		If a :class:`~.RequestsURL` and ``session`` or ``auth`` are not provided,
-		the values are taken from the :class:`~.RequestsURL` object.
+		If this is a :class:`~apeye.requests_url.RequestsURL` object,
+		and ``session`` or ``auth`` are not provided,
+		the values are taken from the :class:`~apeye.requests_url.RequestsURL` object.
 
 	:param auth: Optional login/authentication details for the repository;
 		either a ``(username, password)`` pair or `another authentication object accepted by requests`_.
@@ -275,7 +276,7 @@ class PyPIJSON:
 		:raises:
 
 			* :exc:`packaging.requirements.InvalidRequirement` if the project cannot be found on PyPI.
-			* :exc:`requests.exceptions.HTTPError` if an error occurs when communicating with PyPI.
+			* :exc:`requests.HTTPError` if an error occurs when communicating with PyPI.
 		"""
 
 		if version is None:

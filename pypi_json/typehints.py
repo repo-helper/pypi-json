@@ -200,7 +200,7 @@ class DistributionPackageDict(TypedDict):
 class FileURL(TypedDict):
 	"""
 	:class:`typing.TypedDict` representing the output of
-	:meth:`ProjectMetadata.get_releases_with_digests <~.ProjectMetadata.get_releases_with_digests>`.
+	:meth:`ProjectMetadata.get_releases_with_digests <pypi_json.ProjectMetadata.get_releases_with_digests>`.
 	"""  # noqa: D400
 
 	url: str
