@@ -101,7 +101,7 @@ pypi-json
 .. |language| image:: https://img.shields.io/github/languages/top/repo-helper/pypi-json
 	:alt: GitHub top language
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/repo-helper/pypi-json/v0.0.0
+.. |commits-since| image:: https://img.shields.io/github/commits-since/repo-helper/pypi-json/v0.1.0
 	:target: https://github.com/repo-helper/pypi-json/pulse
 	:alt: GitHub commits since tagged version
 
