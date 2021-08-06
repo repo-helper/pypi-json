@@ -209,6 +209,10 @@ class PyPIJSON:
 	"""
 
 	endpoint: TrailingRequestsURL
+	"""
+	The :class:`apeye.requests_url.TrailingRequestsURL` object
+	representing the PyPI JSON API, with an authenticated requests session.
+	"""
 
 	def __init__(
 			self,
@@ -232,11 +236,6 @@ class PyPIJSON:
 			session.auth = auth
 
 		self.endpoint.session = session
-
-	"""
-	The :class:`apeye.requests_url.TrailingRequestsURL` object
-	representing the PyPI JSON API, with an authenticated requests session.
-	"""
 
 	@property
 	def endpoint_url(self) -> str:
