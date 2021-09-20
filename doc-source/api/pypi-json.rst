@@ -25,10 +25,10 @@
 	.. code-block:: python
 
 		' '.join([
-		f"pypi-json/{__version__} (https://github.com/repo-helper/pypi-json)",
-		f"requests/{requests.__version__}",
-		f"{platform.python_implementation()}/{platform.python_version()}",
-		#  ^^^ e.g. CPython                   ^^^ e.g. 3.8.10
-		])
+				f"pypi-json/{__version__} (https://github.com/repo-helper/pypi-json)",
+				f"requests/{requests.__version__}",
+				f"{platform.python_implementation()}/{platform.python_version()}",
+				#  ^^^ e.g. CPython                   ^^^ e.g. 3.8.10
+				])
 
 	This global attribute should not be changed by other code.

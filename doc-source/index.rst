@@ -60,7 +60,8 @@ pypi-json
 		:workflow: mypy
 		:alt: mypy status
 
-	.. |requires| requires-io-shield::
+	.. |requires| image:: https://dependency-dash.herokuapp.com/github/repo-helper/pypi-json/badge.svg
+		:target: https://dependency-dash.herokuapp.com/github/repo-helper/pypi-json/
 		:alt: Requirements Status
 
 	.. |coveralls| coveralls-shield::
