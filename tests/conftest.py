@@ -1,6 +1,4 @@
 # stdlib
-import os
-from pathlib import Path
 from typing import Callable, Type, TypeVar
 
 # 3rd party
@@ -11,7 +9,6 @@ from betamax import Betamax  # type: ignore
 from domdf_python_tools.paths import PathPlus
 from packaging.tags import Tag
 from pytest_regressions.data_regression import RegressionYamlDumper  # type: ignore
-from shippinglabel.pypi import PYPI_API
 
 # this package
 from pypi_json import PyPIJSON
