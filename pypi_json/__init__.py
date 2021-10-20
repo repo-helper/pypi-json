@@ -106,6 +106,13 @@ class ProjectMetadata(NamedTuple):
 	.. versionadded:: 0.2.0
 	"""
 
+	etag: Optional[str] = None
+	"""
+	The ETag returned by the server with a previous request.
+
+	.. versionadded:: 0.2.0
+	"""
+
 	@property
 	def name(self) -> str:
 		"""
@@ -325,7 +332,45 @@ class PyPIJSON:
 					response=response,
 					)
 
-		return ProjectMetadata(**response.json())
+		return ProjectMetadata(**response.json(), etag=response.headers.get("ETag"))
+
+	def refresh_metadata(self, metadata: ProjectMetadata) -> ProjectMetadata:
+		"""
+		Refresh the given metadata based on the ETag of a previous request.
+
+		If the data on the server is unchanged the ``metadata`` object is returned unchanged,
+		otherwise a new :class:`.cacheable.ProjectMetadata` object is created.
+
+		:param metadata:
+
+		.. versionadded:: 0.2.0
+		"""
+
+		project = metadata.name
+		version = metadata.version
+		etag = metadata.etag
+
+		query_url = self.endpoint / project / str(version) / "json"
+
+		response: requests.Response
+
+		if etag is not None:
+			response = query_url.get(timeout=self.timeout, headers={"If-None-Match": etag})
+		else:
+			response = query_url.get(timeout=self.timeout)
+
+		if response.status_code == 404:
+			raise InvalidRequirement(f"No such project/version {project!r} {str(version)}")
+		elif response.status_code == 304 and etag is not None:
+			return metadata
+		elif response.status_code != 200:
+			raise requests.HTTPError(
+					f"An error occurred when obtaining project metadata for {project!r}: "
+					f"HTTP Status {response.status_code}",
+					response=response,
+					)
+
+		return metadata.__class__(**response.json(), etag=response.headers.get("ETag"))
 
 	def download_file(self, url: Union[str, URL]) -> requests.Response:
 		"""
