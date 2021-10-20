@@ -211,7 +211,7 @@ class VulnerabilityInfoDict(TypedDict):
 	"""
 
 	#: The unique identifier of the vulnerability, e.g. ``"PYSEC-001"``.
-	id: str
+	id: str  # noqa: A003  # pylint: disable=redefined-builtin
 
 	#: The source of the vulnerability information.
 	source: str
