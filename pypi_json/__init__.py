@@ -46,7 +46,7 @@ from packaging.utils import canonicalize_name, parse_wheel_filename
 from packaging.version import Version
 
 # this package
-from pypi_json.typehints import DistributionPackageDict, FileURL, ProjectInfoDict, Self
+from pypi_json.typehints import DistributionPackageDict, FileURL, ProjectInfoDict, Self, VulnerabilityInfoDict
 
 __author__: str = "Dominic Davis-Foster"
 __copyright__: str = "2021 Dominic Davis-Foster"
@@ -98,6 +98,13 @@ class ProjectMetadata(NamedTuple):
 
 	#: A list of release artifacts associated with this version.
 	urls: List[DistributionPackageDict]
+
+	vulnerabilities: List[VulnerabilityInfoDict] = []
+	"""
+	Details of vulnerabilities from the `Open Source Vulnerabilities project <https://osv.dev/>`_.
+
+	.. versionadded:: 0.2.0
+	"""
 
 	@property
 	def name(self) -> str:

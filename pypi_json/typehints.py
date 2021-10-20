@@ -45,7 +45,7 @@ else:  # pragma: no cover
 	except ImportError:
 		TypedDict = dict
 
-__all__ = ["DistributionPackageDict", "FileURL", "ProjectInfoDict", "Self"]
+__all__ = ["DistributionPackageDict", "FileURL", "ProjectInfoDict", "VulnerabilityInfoDict", "Self"]
 
 Self = typing.TypeVar("Self")
 
@@ -196,3 +196,34 @@ class FileURL(TypedDict):
 
 	url: str
 	digest: str
+
+
+class VulnerabilityInfoDict(TypedDict):
+	"""
+	Information about a vulnerability affecting a project's.
+
+	PyPI receives reports on vulnerabilities in the packages hosted on it from the
+	`Open Source Vulnerabilities project <https://osv.dev/>`_,
+	which in turn ingests vulnerabilities from the
+	`Python Packaging Advisory Database <https://github.com/pypa/advisory-db>`_.
+
+	.. versionadded:: 0.2.0
+	"""
+
+	#: The unique identifier of the vulnerability, e.g. ``"PYSEC-001"``.
+	id: str
+
+	#: The source of the vulnerability information.
+	source: str
+
+	#: A URL giving further information about the vulnerability.
+	link: str
+
+	#: Aliases of the vulnerability.
+	aliases: typing.List[str]
+
+	#: Additional details about the vulnerability.
+	details: str
+
+	#: The version(s) the vulnerability was fixed in, e.g. ``["3.3.2"]``.
+	fixed_in: typing.List[str]
