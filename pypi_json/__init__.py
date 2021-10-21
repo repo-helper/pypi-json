@@ -103,7 +103,7 @@ class ProjectMetadata(NamedTuple):
 	"""
 	Details of vulnerabilities from the `Open Source Vulnerabilities project <https://osv.dev/>`_.
 
-	.. versionadded:: 0.2.0
+	(*New in version 0.2.0*)
 	"""
 
 	@property
