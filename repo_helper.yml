@@ -42,7 +42,6 @@ keywords:
  - warehouse
 
 extra_sphinx_extensions:
- - sphinx_toolbox_experimental.html_section
  - sphinx_toolbox_experimental.autosummary_widths
  - sphinx_toolbox_experimental.needspace
  - sphinx_toolbox_experimental.succinct_seealso
