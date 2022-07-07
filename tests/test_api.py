@@ -1,5 +1,6 @@
 # stdlib
 import gzip
+import re
 import tarfile
 import zipfile
 from urllib.parse import urlparse
@@ -40,6 +41,26 @@ def test_get_latest_version(advanced_data_regression: AdvancedDataRegressionFixt
 	assert metadata.name == "octocheese"
 	assert metadata.version == Version("0.1.0")
 	assert metadata.get_latest_version() == Version("0.3.0")
+
+
+def test_changes_to_api_july_2022(advanced_data_regression: AdvancedDataRegressionFixture):
+	with PyPIJSON() as client:
+		metadata = client.get_metadata("OctoCheese", "0.1.0")
+
+		assert metadata.releases is None
+
+		match_string = re.escape(
+				"The 'releases' key is no longer included in the JSON responses for individual versions. Please call the .metadata() method without supplying a version."
+				)
+		with pytest.raises(DeprecationWarning, match=match_string):
+			metadata.get_latest_version()
+
+		with pytest.raises(DeprecationWarning, match=match_string):
+			metadata.get_releases_with_digests()
+
+	assert metadata.name == "octocheese"
+	assert metadata.version == Version("0.1.0")
+	assert isinstance(metadata.urls, list)
 
 
 @pytest.mark.parametrize("version", [None, "0.1.0"])

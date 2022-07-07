@@ -33,7 +33,7 @@ PyPI JSON API client library.
 
 # stdlib
 import platform
-from typing import Any, ClassVar, Dict, List, NamedTuple, Optional, Tuple, Union
+from typing import TYPE_CHECKING, Any, ClassVar, Dict, List, NamedTuple, Optional, Tuple, Union
 from urllib.parse import urlparse, urlunparse
 
 # 3rd party
@@ -47,6 +47,10 @@ from packaging.version import Version
 
 # this package
 from pypi_json.typehints import DistributionPackageDict, FileURL, ProjectInfoDict, Self, VulnerabilityInfoDict
+
+if TYPE_CHECKING:
+	# stdlib
+	from typing import NoReturn
 
 __author__: str = "Dominic Davis-Foster"
 __copyright__: str = "2021 Dominic Davis-Foster"
@@ -93,11 +97,17 @@ class ProjectMetadata(NamedTuple):
 	#: Monotonically increasing integer sequence that changes every time the project is updated.
 	last_serial: int
 
-	#: A mapping of version numbers to a list of artifacts associated with a version.
-	releases: Dict[str, List[DistributionPackageDict]]
+	releases: Optional[Dict[str, List[DistributionPackageDict]]] = None
+	"""
+	A mapping of version numbers to a list of artifacts associated with a version.
+
+	.. versionchanged:: 0.3.0
+
+		Can now be :py:obj:`None`, as the JSON API no longer includes this key in queries for a specific version.
+	"""
 
 	#: A list of release artifacts associated with this version.
-	urls: List[DistributionPackageDict]
+	urls: List[DistributionPackageDict] = ()  # type: ignore[assignment]
 
 	vulnerabilities: List[VulnerabilityInfoDict] = []
 	"""
@@ -122,6 +132,12 @@ class ProjectMetadata(NamedTuple):
 
 		return Version(self.info["version"])
 
+	def _raise_missing_releases_key(self) -> "NoReturn":
+		raise DeprecationWarning(
+				"The 'releases' key is no longer included in the JSON responses for individual versions. "
+				"Please call the .metadata() method without supplying a version."
+				)
+
 	def get_latest_version(self) -> Version:
 		"""
 		Returns the version number of the latest release on PyPI for this project.
@@ -129,12 +145,17 @@ class ProjectMetadata(NamedTuple):
 		Version numbers are sorted using the rules in :pep:`386`.
 		"""
 
+		if self.releases is None:
+			self._raise_missing_releases_key()
 		return max(map(Version, self.releases))
 
 	def get_releases_with_digests(self) -> Dict[str, List[FileURL]]:
 		"""
 		Returns a dictionary mapping PyPI release versions to download URLs and the sha256sum of the file contents.
 		"""
+
+		if self.releases is None:
+			self._raise_missing_releases_key()
 
 		pypi_releases = {}
 
