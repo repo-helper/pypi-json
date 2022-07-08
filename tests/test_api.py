@@ -19,14 +19,17 @@ from packaging.version import Version
 from pypi_json import PyPIJSON
 
 
-def uri_validator(x):
+def uri_validator(x) -> bool:  # noqa: MAN001
 	# Based on https://stackoverflow.com/a/38020041
 	# By https://stackoverflow.com/users/1668293/alemol and https://stackoverflow.com/users/953553/andilabs
 	result = urlparse(x)
 	return all([result.scheme, result.netloc, result.path])
 
 
-def test_get_metadata(advanced_data_regression: AdvancedDataRegressionFixture, module_cassette):
+def test_get_metadata(
+		advanced_data_regression: AdvancedDataRegressionFixture,
+		module_cassette: PyPIJSON,
+		):
 	metadata = module_cassette.get_metadata("OctoCheese")
 	advanced_data_regression.check(metadata)
 
@@ -34,7 +37,10 @@ def test_get_metadata(advanced_data_regression: AdvancedDataRegressionFixture, m
 	assert metadata.version == Version("0.3.0")
 
 
-def test_get_latest_version(advanced_data_regression: AdvancedDataRegressionFixture, cassette):
+def test_get_latest_version(
+		advanced_data_regression: AdvancedDataRegressionFixture,
+		cassette: PyPIJSON,
+		):
 	metadata = cassette.get_metadata("OctoCheese", "0.1.0")
 	advanced_data_regression.check(metadata)
 
@@ -43,7 +49,7 @@ def test_get_latest_version(advanced_data_regression: AdvancedDataRegressionFixt
 	assert metadata.get_latest_version() == Version("0.3.0")
 
 
-def test_changes_to_api_july_2022(advanced_data_regression: AdvancedDataRegressionFixture):
+def test_changes_to_api_july_2022():
 	with PyPIJSON() as client:
 		metadata = client.get_metadata("OctoCheese", "0.1.0")
 
@@ -66,8 +72,8 @@ def test_changes_to_api_july_2022(advanced_data_regression: AdvancedDataRegressi
 @pytest.mark.parametrize("version", [None, "0.1.0"])
 def test_get_pypi_releases(
 		advanced_data_regression: AdvancedDataRegressionFixture,
-		version,
-		module_cassette,
+		version: str,
+		module_cassette: PyPIJSON,
 		):
 	metadata = module_cassette.get_metadata("OctoCheese", version)
 
@@ -87,7 +93,9 @@ def test_get_pypi_releases(
 
 @pytest.mark.parametrize("version", [None, "0.1.0"])
 def test_get_releases_with_digests(
-		advanced_data_regression: AdvancedDataRegressionFixture, version, module_cassette
+		advanced_data_regression: AdvancedDataRegressionFixture,
+		version: str,
+		module_cassette: PyPIJSON,
 		):
 	metadata = module_cassette.get_metadata("OctoCheese", version)
 
@@ -163,7 +171,7 @@ def test_download_file(
 		advanced_data_regression.check(sorted({f.name for f in tar.getmembers()}))
 
 
-def test_metadata_nonexistant(cassette):
+def test_metadata_nonexistant(cassette: PyPIJSON):
 	with pytest.raises(InvalidRequirement, match="No such project 'FizzBuzz'"):
 		cassette.get_metadata("FizzBuzz")
 
@@ -181,16 +189,21 @@ def test_metadata_nonexistant(cassette):
 				param("coverage", None, idx=0),
 				]
 		)
-def test_get_wheel_tag_mapping(name, version, advanced_data_regression: AdvancedDataRegressionFixture, cassette):
+def test_get_wheel_tag_mapping(
+		name: str,
+		version: str,
+		advanced_data_regression: AdvancedDataRegressionFixture,
+		cassette: PyPIJSON,
+		):
 	metadata = cassette.get_metadata(name, version)
 
 	tag_url_map, non_wheel_urls = metadata.get_wheel_tag_mapping(version)
-	tag_url_map = dict(sorted((str(k), v) for k, v in tag_url_map.items()))
-	advanced_data_regression.check((tag_url_map, non_wheel_urls))
+	tag_url_map_str = dict(sorted((str(k), v) for k, v in tag_url_map.items()))
+	advanced_data_regression.check((tag_url_map_str, non_wheel_urls))
 
 
 @pytest.mark.parametrize("name, version", [param("microsoft", "0.0.1", idx=0)])
-def test_get_wheel_tag_mapping_no_files(name, version, cassette):
+def test_get_wheel_tag_mapping_no_files(name: str, version: str, cassette: PyPIJSON):
 	metadata = cassette.get_metadata(name, version)
 
 	with pytest.raises(ValueError, match=f"Version {version} has no files on PyPI."):
@@ -198,14 +211,14 @@ def test_get_wheel_tag_mapping_no_files(name, version, cassette):
 
 
 @pytest.mark.parametrize("name, version", [param("microsoft", "0.0.1", idx=0)])
-def test_get_wheel_tag_mapping_no_version(name, version, cassette):
+def test_get_wheel_tag_mapping_no_version(name: str, version: str, cassette: PyPIJSON):
 	metadata = cassette.get_metadata(name, version)
 
 	with pytest.raises(ValueError, match="Cannot find version 1.2.3 on PyPI."):
 		metadata.get_wheel_tag_mapping(Version("1.2.3"))
 
 
-def test_get_metadata_not_found(cassette):
+def test_get_metadata_not_found(cassette: PyPIJSON):
 	with pytest.raises(InvalidRequirement, match="No such project 'pypi-json'"):
 		cassette.get_metadata("pypi-json", None)
 
@@ -256,7 +269,7 @@ def test_custom_endpoint():
 
 	my_endpoint = RequestsURL("http://my.pypi")
 	fake_session = object()
-	my_endpoint.session = fake_session  # type: ignore
+	my_endpoint.session = fake_session  # type: ignore[assignment]
 
 	client = PyPIJSON(my_endpoint)
 	assert client.endpoint == my_endpoint
@@ -265,6 +278,6 @@ def test_custom_endpoint():
 	my_endpoint = RequestsURL("http://my.pypi")
 	fake_session = object()
 
-	client = PyPIJSON(my_endpoint, session=fake_session)  # type: ignore
+	client = PyPIJSON(my_endpoint, session=fake_session)  # type: ignore[arg-type]
 	assert client.endpoint == my_endpoint
 	assert client.endpoint.session is fake_session
