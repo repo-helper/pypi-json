@@ -8,7 +8,7 @@ from apeye.url import URL
 from betamax import Betamax  # type: ignore[import]
 from domdf_python_tools.paths import PathPlus
 from packaging.tags import Tag
-from pytest_regressions.data_regression import RegressionYamlDumper  # type: ignore[import]
+from pytest_regressions.data_regression import RegressionYamlDumper
 
 # this package
 from pypi_json import PyPIJSON
