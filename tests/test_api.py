@@ -3,10 +3,12 @@ import gzip
 import re
 import tarfile
 import zipfile
+from typing import Union
 from urllib.parse import urlparse
 
 # 3rd party
 import pytest
+from apeye import URL
 from apeye.requests_url import RequestsURL
 #from apeye.url import URL
 from coincidence.params import param
@@ -112,20 +114,28 @@ def test_get_releases_with_digests(
 	advanced_data_regression.check(release_url_list)
 
 
+@pytest.mark.parametrize(
+		"url",
+		[
+				pytest.param((
+						"https://files.pythonhosted.org/packages/fa/fb"
+						"/d301018af3f22bdbf34b624037e851561914c244a26add8278e4e7273578/octocheese-0.0.2.tar.gz"
+						),
+								id='%'),
+				pytest.param(
+						URL("https://files.pythonhosted.org/packages/fa/fb")
+						/ "d301018af3f22bdbf34b624037e851561914c244a26add8278e4e7273578/octocheese-0.0.2.tar.gz",
+						id='^'
+						),
+				]
+		)
 def test_download_file(
-		advanced_data_regression: AdvancedDataRegressionFixture,
-		tmp_pathplus: PathPlus,
+		advanced_data_regression: AdvancedDataRegressionFixture, tmp_pathplus: PathPlus, url: Union[str, URL]
 		):
 
 	the_file = tmp_pathplus / "octocheese-0.0.2.tar.gz"
 
 	with PyPIJSON() as client:
-
-		url = (
-				"https://files.pythonhosted.org/packages/fa/fb"
-				"/d301018af3f22bdbf34b624037e851561914c244a26add8278e4e7273578/octocheese-0.0.2.tar.gz"
-				)
-
 		response = client.download_file(url)
 
 	assert response.status_code == 200
