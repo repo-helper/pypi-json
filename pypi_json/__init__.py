@@ -34,7 +34,6 @@ PyPI JSON API client library.
 # stdlib
 import platform
 from typing import TYPE_CHECKING, Any, ClassVar, Dict, List, NamedTuple, Optional, Tuple, Union
-from urllib.parse import urlparse, urlunparse
 
 # 3rd party
 import requests
@@ -47,6 +46,8 @@ from packaging.version import Version
 
 # this package
 from pypi_json.typehints import DistributionPackageDict, FileURL, ProjectInfoDict, Self, VulnerabilityInfoDict
+
+# from urllib.parse import urlparse, urlunparse
 
 if TYPE_CHECKING:
 	# stdlib
@@ -360,18 +361,18 @@ class PyPIJSON:
 
 		return self.endpoint.session.get(url)
 
-	@staticmethod
-	def get_signature_url(download_url: Union[str, URL]) -> str:
-		"""
-		Returns the URL of the PGP signature for the download URL.
+	# @staticmethod
+	# def get_signature_url(download_url: Union[str, URL]) -> str:
+	# 	"""
+	# 	Returns the URL of the PGP signature for the download URL.
 
-		A file only has a PGP signature if it's ``has_sig`` key is :py:obj:`True`.
+	# 	A file only has a PGP signature if it's ``has_sig`` key is :py:obj:`True`.
 
-		:param download_url:
-		"""
+	# 	:param download_url:
+	# 	"""
 
-		if isinstance(download_url, URL):
-			download_url = str(download_url)
+	# 	if isinstance(download_url, URL):
+	# 		download_url = str(download_url)
 
-		u = urlparse(download_url)
-		return urlunparse((u[0], u[1], u[2] + ".asc", '', '', ''))
+	# 	u = urlparse(download_url)
+	# 	return urlunparse((u[0], u[1], u[2] + ".asc", '', '', ''))

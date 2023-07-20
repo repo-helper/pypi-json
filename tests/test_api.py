@@ -8,7 +8,7 @@ from urllib.parse import urlparse
 # 3rd party
 import pytest
 from apeye.requests_url import RequestsURL
-from apeye.url import URL
+#from apeye.url import URL
 from coincidence.params import param
 from coincidence.regressions import AdvancedDataRegressionFixture
 from domdf_python_tools.paths import PathPlus
@@ -235,34 +235,34 @@ def test_class_misc():
 		assert repr(client) == "<PyPIJSON('https://my.custom.pypi/')>"
 
 
-def test_signature():
-	expected = "https://files.pythonhosted.org/packages/0a/6e/dd532144bcaf242417f9bacccdc0e1901e0d06e3367826193c84ea7a347b/build-0.6.0-py3-none-any.whl.asc"
+# def test_signature():
+# 	expected = "https://files.pythonhosted.org/packages/0a/6e/dd532144bcaf242417f9bacccdc0e1901e0d06e3367826193c84ea7a347b/build-0.6.0-py3-none-any.whl.asc"
 
-	with PyPIJSON() as client:
-		metadata = client.get_metadata("build", "0.6.0")
-		assert metadata.urls[0]["has_sig"]
+# 	with PyPIJSON() as client:
+# 		metadata = client.get_metadata("build", "0.6.0")
+# 		assert metadata.urls[0]["has_sig"]
 
-		assert client.get_signature_url(metadata.urls[0]["url"]) == expected
+# 		assert client.get_signature_url(metadata.urls[0]["url"]) == expected
 
-		response = client.download_file(client.get_signature_url(metadata.urls[0]["url"]))
-		assert response.status_code == 200
-		assert response.content.startswith(b"-----BEGIN PGP SIGNATURE-----\n\n")
-		assert response.content.endswith(b"-----END PGP SIGNATURE-----\n")
+# 		response = client.download_file(client.get_signature_url(metadata.urls[0]["url"]))
+# 		assert response.status_code == 200
+# 		assert response.content.startswith(b"-----BEGIN PGP SIGNATURE-----\n\n")
+# 		assert response.content.endswith(b"-----END PGP SIGNATURE-----\n")
 
-		response = client.download_file(URL(client.get_signature_url(metadata.urls[0]["url"])))
-		assert response.status_code == 200
-		assert response.content.startswith(b"-----BEGIN PGP SIGNATURE-----\n\n")
-		assert response.content.endswith(b"-----END PGP SIGNATURE-----\n")
+# 		response = client.download_file(URL(client.get_signature_url(metadata.urls[0]["url"])))
+# 		assert response.status_code == 200
+# 		assert response.content.startswith(b"-----BEGIN PGP SIGNATURE-----\n\n")
+# 		assert response.content.endswith(b"-----END PGP SIGNATURE-----\n")
 
-		response = client.download_file(client.get_signature_url(URL(metadata.urls[0]["url"])))
-		assert response.status_code == 200
-		assert response.content.startswith(b"-----BEGIN PGP SIGNATURE-----\n\n")
-		assert response.content.endswith(b"-----END PGP SIGNATURE-----\n")
+# 		response = client.download_file(client.get_signature_url(URL(metadata.urls[0]["url"])))
+# 		assert response.status_code == 200
+# 		assert response.content.startswith(b"-----BEGIN PGP SIGNATURE-----\n\n")
+# 		assert response.content.endswith(b"-----END PGP SIGNATURE-----\n")
 
-		response = client.download_file(URL(client.get_signature_url(URL(metadata.urls[0]["url"]))))
-		assert response.status_code == 200
-		assert response.content.startswith(b"-----BEGIN PGP SIGNATURE-----\n\n")
-		assert response.content.endswith(b"-----END PGP SIGNATURE-----\n")
+# 		response = client.download_file(URL(client.get_signature_url(URL(metadata.urls[0]["url"]))))
+# 		assert response.status_code == 200
+# 		assert response.content.startswith(b"-----BEGIN PGP SIGNATURE-----\n\n")
+# 		assert response.content.endswith(b"-----END PGP SIGNATURE-----\n")
 
 
 def test_custom_endpoint():

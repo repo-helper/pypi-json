@@ -149,8 +149,8 @@ class DistributionPackageDict(TypedDict):
 	#: The basename of the package file (including extension).
 	filename: str
 
-	#: Whether the package file is accompanied by a PGP signature file.
-	has_sig: bool
+	# #: Whether the package file is accompanied by a PGP signature file.
+	# has_sig: bool
 
 	#: Deprecated
 	md5_digest: str
