@@ -203,7 +203,7 @@ Contents
 .. sidebar-links::
 	:caption: Links
 	:github:
-	:pypi: highlight
+	:pypi: pypi-json
 
 	Contributing Guide <https://contributing.repo-helper.uk>
 
