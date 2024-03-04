@@ -46,4 +46,4 @@ known_third_party = [
     "requests",
     "shippinglabel",
 ]
-known_first_party = "pypi_json"
+known_first_party = [ "pypi_json",]
