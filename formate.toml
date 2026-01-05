@@ -27,21 +27,6 @@ lines_between_types = 0
 use_parentheses = true
 remove_redundant_aliases = true
 default_section = "THIRDPARTY"
-known_third_party = [
-    "apeye",
-    "betamax",
-    "coincidence",
-    "coverage",
-    "coverage_pyver_pragma",
-    "importlib_metadata",
-    "packaging",
-    "pytest",
-    "pytest_cov",
-    "pytest_randomly",
-    "pytest_timeout",
-    "requests",
-    "shippinglabel",
-]
 known_first_party = [ "pypi_json",]
 
 [config]
