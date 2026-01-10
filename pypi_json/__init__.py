@@ -136,7 +136,7 @@ class ProjectMetadata(NamedTuple):
 	def _raise_missing_releases_key(self) -> "NoReturn":
 		raise DeprecationWarning(
 				"The 'releases' key is no longer included in the JSON responses for individual versions. "
-				"Please call the .metadata() method without supplying a version."
+				"Please call the .metadata() method without supplying a version.",
 				)
 
 	def get_latest_version(self) -> Version:
@@ -274,7 +274,7 @@ class PyPIJSON:
 			self,
 			endpoint: Union[str, URL] = "https://pypi.org/pypi",
 			auth: Any = None,
-			session: Optional[requests.Session] = None
+			session: Optional[requests.Session] = None,
 			) -> None:
 
 		if isinstance(endpoint, RequestsURL):

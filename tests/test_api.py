@@ -58,7 +58,7 @@ def test_changes_to_api_july_2022():
 		assert metadata.releases is None
 
 		match_string = re.escape(
-				"The 'releases' key is no longer included in the JSON responses for individual versions. Please call the .metadata() method without supplying a version."
+				"The 'releases' key is no longer included in the JSON responses for individual versions. Please call the .metadata() method without supplying a version.",
 				)
 		with pytest.raises(DeprecationWarning, match=match_string):
 			metadata.get_latest_version()
@@ -117,20 +117,24 @@ def test_get_releases_with_digests(
 @pytest.mark.parametrize(
 		"url",
 		[
-				pytest.param((
-						"https://files.pythonhosted.org/packages/fa/fb"
-						"/d301018af3f22bdbf34b624037e851561914c244a26add8278e4e7273578/octocheese-0.0.2.tar.gz"
+				pytest.param(
+						(
+								"https://files.pythonhosted.org/packages/fa/fb"
+								"/d301018af3f22bdbf34b624037e851561914c244a26add8278e4e7273578/octocheese-0.0.2.tar.gz"
+								),
+						id='%',
 						),
-								id='%'),
 				pytest.param(
 						URL("https://files.pythonhosted.org/packages/fa/fb")
 						/ "d301018af3f22bdbf34b624037e851561914c244a26add8278e4e7273578/octocheese-0.0.2.tar.gz",
-						id='^'
+						id='^',
 						),
-				]
+				],
 		)
 def test_download_file(
-		advanced_data_regression: AdvancedDataRegressionFixture, tmp_pathplus: PathPlus, url: Union[str, URL]
+		advanced_data_regression: AdvancedDataRegressionFixture,
+		tmp_pathplus: PathPlus,
+		url: Union[str, URL],
 		):
 
 	the_file = tmp_pathplus / "octocheese-0.0.2.tar.gz"
@@ -197,7 +201,7 @@ def test_metadata_nonexistant(cassette: PyPIJSON):
 				param("scipy", None, idx=0),
 				param("pyyaml", None, idx=0),
 				param("coverage", None, idx=0),
-				]
+				],
 		)
 def test_get_wheel_tag_mapping(
 		name: str,
