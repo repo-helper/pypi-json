@@ -113,7 +113,7 @@ pypi-json
 	:alt: Maintenance
 
 .. |pypi-downloads| image:: https://img.shields.io/pypi/dm/pypi-json
-	:target: https://pypi.org/project/pypi-json/
+	:target: https://pypistats.org/packages/pypi-json
 	:alt: PyPI - Downloads
 
 .. end shields
