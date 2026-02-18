@@ -29,7 +29,7 @@ def cassette(request: FixtureRequest) -> Iterator[PyPIJSON]:
 	"""  # noqa: D400
 
 	with PyPIJSON() as client, Betamax(client.endpoint.session) as vcr:
-		vcr.use_cassette(request.node.name, record="once")
+		vcr.use_cassette(request.node.name, record="none")
 
 		yield client
 

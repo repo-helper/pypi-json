@@ -36,19 +36,18 @@ def test_get_metadata(
 	advanced_data_regression.check(metadata)
 
 	assert metadata.name == "octocheese"
-	assert metadata.version == Version("0.3.0")
+	assert metadata.version == Version("0.7.0")
 
 
 def test_get_latest_version(
 		advanced_data_regression: AdvancedDataRegressionFixture,
 		cassette: PyPIJSON,
 		):
-	metadata = cassette.get_metadata("OctoCheese", "0.1.0")
+	metadata = cassette.get_metadata("OctoCheese")
 	advanced_data_regression.check(metadata)
 
 	assert metadata.name == "octocheese"
-	assert metadata.version == Version("0.1.0")
-	assert metadata.get_latest_version() == Version("0.3.0")
+	assert metadata.get_latest_version() == Version("0.7.0")
 
 
 def test_changes_to_api_july_2022():
@@ -58,7 +57,7 @@ def test_changes_to_api_july_2022():
 		assert metadata.releases is None
 
 		match_string = re.escape(
-				"The 'releases' key is no longer included in the JSON responses for individual versions. Please call the .metadata() method without supplying a version.",
+				"The 'releases' key is no longer included in the JSON responses for individual versions. Please call the .get_metadata() method without supplying a version.",
 				)
 		with pytest.raises(DeprecationWarning, match=match_string):
 			metadata.get_latest_version()
@@ -71,13 +70,11 @@ def test_changes_to_api_july_2022():
 	assert isinstance(metadata.urls, list)
 
 
-@pytest.mark.parametrize("version", [None, "0.1.0"])
 def test_get_pypi_releases(
 		advanced_data_regression: AdvancedDataRegressionFixture,
-		version: str,
 		module_cassette: PyPIJSON,
 		):
-	metadata = module_cassette.get_metadata("OctoCheese", version)
+	metadata = module_cassette.get_metadata("OctoCheese")
 
 	releases = metadata.get_releases()
 	assert isinstance(releases, dict)
@@ -93,13 +90,11 @@ def test_get_pypi_releases(
 	advanced_data_regression.check(release_url_list)
 
 
-@pytest.mark.parametrize("version", [None, "0.1.0"])
 def test_get_releases_with_digests(
 		advanced_data_regression: AdvancedDataRegressionFixture,
-		version: str,
 		module_cassette: PyPIJSON,
 		):
-	metadata = module_cassette.get_metadata("OctoCheese", version)
+	metadata = module_cassette.get_metadata("OctoCheese")
 
 	releases = metadata.get_releases_with_digests()
 	assert isinstance(releases, dict)

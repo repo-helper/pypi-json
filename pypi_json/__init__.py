@@ -150,7 +150,7 @@ class ProjectMetadata(NamedTuple):
 	def _raise_missing_releases_key(self) -> "NoReturn":
 		raise DeprecationWarning(
 				"The 'releases' key is no longer included in the JSON responses for individual versions. "
-				"Please call the .metadata() method without supplying a version.",
+				"Please call the .get_metadata() method without supplying a version.",
 				)
 
 	def get_latest_version(self) -> Version:

@@ -1,6 +1,6 @@
 info:
-  author: Dominic Davis-Foster
-  author_email: dominic@davis-foster.co.uk
+  author: ''
+  author_email: Dominic Davis-Foster <dominic@davis-foster.co.uk>
   bugtrack_url: null
   classifiers:
   - 'Development Status :: 4 - Beta'
@@ -9,33 +9,42 @@ info:
   - 'Operating System :: OS Independent'
   - 'Programming Language :: Python'
   - 'Programming Language :: Python :: 3 :: Only'
+  - 'Programming Language :: Python :: 3.10'
+  - 'Programming Language :: Python :: 3.11'
+  - 'Programming Language :: Python :: 3.12'
   - 'Programming Language :: Python :: 3.6'
   - 'Programming Language :: Python :: 3.7'
   - 'Programming Language :: Python :: 3.8'
+  - 'Programming Language :: Python :: 3.9'
   - 'Programming Language :: Python :: Implementation :: CPython'
   - 'Topic :: Utilities'
-  description: "#############\nOctoCheese\n#############\n\n.. start short_desc\n\n\
-    **\U0001F419 \U0001F9C0 – Copy PyPI Packages to GitHub Releases**\n\n.. end short_desc\n\
-    \nThis is a GitHub action, Python package and command line script that copies\
-    \ distribution files from PyPI (\"The Cheese Shop\") and adds them to the relevant\
-    \ tag in GitHub Releases.\n\n.. start shields\n\n.. list-table::\n\t:stub-columns:\
-    \ 1\n\t:widths: 10 90\n\n\t* - Docs\n\t  - |docs| |docs_check|\n\t* - Tests\n\t\
-    \  - |travis| |actions_windows| |actions_macos| |coveralls| |codefactor| |pre_commit_ci|\n\
+  - 'Typing :: Typed'
+  description: "\n#############\nOctoCheese\n#############\n\n.. start short_desc\n\
+    \n**\U0001F419 \U0001F9C0 – Copy PyPI Packages to GitHub Releases**\n\n.. end\
+    \ short_desc\n\nThis is a GitHub action, Python package and command line script\
+    \ that copies distribution files from PyPI (\"The Cheese Shop\") and adds them\
+    \ to the relevant tag in GitHub Releases.\n\n.. start shields\n\n.. list-table::\n\
+    \t:stub-columns: 1\n\t:widths: 10 90\n\n\t* - Docs\n\t  - |docs| |docs_check|\n\
+    \t* - Tests\n\t  - |actions_linux| |actions_windows| |actions_macos| |coveralls|\n\
     \t* - PyPI\n\t  - |pypi-version| |supported-versions| |supported-implementations|\
-    \ |wheel|\n\t* - Activity\n\t  - |commits-latest| |commits-since| |maintained|\n\
-    \t* - Other\n\t  - |license| |language| |requires| |pre_commit|\n\n.. |docs| image::\
-    \ https://img.shields.io/readthedocs/octocheese/latest?logo=read-the-docs\n\t\
-    :target: https://octocheese.readthedocs.io/en/latest/?badge=latest\n\t:alt: Documentation\
+    \ |wheel|\n\t* - Activity\n\t  - |commits-latest| |commits-since| |maintained|\
+    \ |pypi-downloads|\n\t* - QA\n\t  - |codefactor| |actions_flake8| |actions_mypy|\n\
+    \t* - Other\n\t  - |license| |language| |requires|\n\n.. |docs| image:: https://img.shields.io/readthedocs/octocheese/latest?logo=read-the-docs\n\
+    \t:target: https://octocheese.readthedocs.io/en/latest\n\t:alt: Documentation\
     \ Build Status\n\n.. |docs_check| image:: https://github.com/domdfcoding/octocheese/workflows/Docs%20Check/badge.svg\n\
     \t:target: https://github.com/domdfcoding/octocheese/actions?query=workflow%3A%22Docs+Check%22\n\
-    \t:alt: Docs Check Status\n\n.. |travis| image:: https://img.shields.io/travis/com/domdfcoding/octocheese/master?logo=travis\n\
-    \t:target: https://travis-ci.com/domdfcoding/octocheese\n\t:alt: Travis Build\
-    \ Status\n\n.. |actions_windows| image:: https://github.com/domdfcoding/octocheese/workflows/Windows%20Tests/badge.svg\n\
-    \t:target: https://github.com/domdfcoding/octocheese/actions?query=workflow%3A%22Windows+Tests%22\n\
-    \t:alt: Windows Tests Status\n\n.. |actions_macos| image:: https://github.com/domdfcoding/octocheese/workflows/macOS%20Tests/badge.svg\n\
-    \t:target: https://github.com/domdfcoding/octocheese/actions?query=workflow%3A%22macOS+Tests%22\n\
-    \t:alt: macOS Tests Status\n\n.. |requires| image:: https://requires.io/github/domdfcoding/octocheese/requirements.svg?branch=master\n\
-    \t:target: https://requires.io/github/domdfcoding/octocheese/requirements/?branch=master\n\
+    \t:alt: Docs Check Status\n\n.. |actions_linux| image:: https://github.com/domdfcoding/octocheese/workflows/Linux/badge.svg\n\
+    \t:target: https://github.com/domdfcoding/octocheese/actions?query=workflow%3A%22Linux%22\n\
+    \t:alt: Linux Test Status\n\n.. |actions_windows| image:: https://github.com/domdfcoding/octocheese/workflows/Windows/badge.svg\n\
+    \t:target: https://github.com/domdfcoding/octocheese/actions?query=workflow%3A%22Windows%22\n\
+    \t:alt: Windows Test Status\n\n.. |actions_macos| image:: https://github.com/domdfcoding/octocheese/workflows/macOS/badge.svg\n\
+    \t:target: https://github.com/domdfcoding/octocheese/actions?query=workflow%3A%22macOS%22\n\
+    \t:alt: macOS Test Status\n\n.. |actions_flake8| image:: https://github.com/domdfcoding/octocheese/workflows/Flake8/badge.svg\n\
+    \t:target: https://github.com/domdfcoding/octocheese/actions?query=workflow%3A%22Flake8%22\n\
+    \t:alt: Flake8 Status\n\n.. |actions_mypy| image:: https://github.com/domdfcoding/octocheese/workflows/mypy/badge.svg\n\
+    \t:target: https://github.com/domdfcoding/octocheese/actions?query=workflow%3A%22mypy%22\n\
+    \t:alt: mypy status\n\n.. |requires| image:: https://dependency-dash.repo-helper.uk/github/domdfcoding/octocheese/badge.svg\n\
+    \t:target: https://dependency-dash.repo-helper.uk/github/domdfcoding/octocheese/\n\
     \t:alt: Requirements Status\n\n.. |coveralls| image:: https://img.shields.io/coveralls/github/domdfcoding/octocheese/master?logo=coveralls\n\
     \t:target: https://coveralls.io/github/domdfcoding/octocheese?branch=master\n\t\
     :alt: Coverage\n\n.. |codefactor| image:: https://img.shields.io/codefactor/grade/github/domdfcoding/octocheese?logo=codefactor\n\
@@ -50,25 +59,22 @@ info:
     \ https://pypi.org/project/octocheese/\n\t:alt: PyPI - Wheel\n\n.. |license| image::\
     \ https://img.shields.io/github/license/domdfcoding/octocheese\n\t:target: https://github.com/domdfcoding/octocheese/blob/master/LICENSE\n\
     \t:alt: License\n\n.. |language| image:: https://img.shields.io/github/languages/top/domdfcoding/octocheese\n\
-    \t:alt: GitHub top language\n\n.. |commits-since| image:: https://img.shields.io/github/commits-since/domdfcoding/octocheese/v0.1.0\n\
+    \t:alt: GitHub top language\n\n.. |commits-since| image:: https://img.shields.io/github/commits-since/domdfcoding/octocheese/v0.7.0\n\
     \t:target: https://github.com/domdfcoding/octocheese/pulse\n\t:alt: GitHub commits\
     \ since tagged version\n\n.. |commits-latest| image:: https://img.shields.io/github/last-commit/domdfcoding/octocheese\n\
     \t:target: https://github.com/domdfcoding/octocheese/commit/master\n\t:alt: GitHub\
-    \ last commit\n\n.. |maintained| image:: https://img.shields.io/maintenance/yes/2020\n\
-    \t:alt: Maintenance\n\n.. |pre_commit| image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white\n\
-    \t:target: https://github.com/pre-commit/pre-commit\n\t:alt: pre-commit\n\n..\
-    \ |pre_commit_ci| image:: https://results.pre-commit.ci/badge/github/domdfcoding/octocheese/master.svg\n\
-    \t:target: https://results.pre-commit.ci/latest/github/domdfcoding/octocheese/master\n\
-    \t:alt: pre-commit.ci status\n\n.. end shields\n\n|\n\nGitHub Actions Usage\n\
-    ---------------------\n\nIn a GitHub Workflow:\n\n.. code-block:: yaml\n\n   \
-    \ name: \"Copy PyPI to Releases\"\n    on:\n    - push\n\n    jobs:\n      releases:\n\
-    \        runs-on: ubuntu-latest\n        steps:\n        - uses: domdfcoding/octocheese@master\n\
-    \          with:\n            pypi_name: \"domdf_python_tools\"\n          env:\n\
-    \            GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}\n\n\nInstalling as a Python\
-    \ package and script\n------------------------------------------\n\n.. start installation\n\
-    \n``OctoCheese`` can be installed from PyPI.\n\nTo install with ``pip``:\n\n..\
-    \ code-block:: bash\n\n\t$ python -m pip install octocheese\n\n.. end installation\n\
-    \n\n"
+    \ last commit\n\n.. |maintained| image:: https://img.shields.io/maintenance/yes/2024\n\
+    \t:alt: Maintenance\n\n.. |pypi-downloads| image:: https://img.shields.io/pypi/dm/octocheese\n\
+    \t:target: https://pypi.org/project/octocheese/\n\t:alt: PyPI - Downloads\n\n\
+    .. end shields\n\n|\n\nGitHub Actions Usage\n---------------------\n\nIn a GitHub\
+    \ Workflow:\n\n.. code-block:: yaml\n\n    name: \"Copy PyPI to Releases\"\n \
+    \   on:\n    - push\n\n    jobs:\n      releases:\n        runs-on: ubuntu-latest\n\
+    \        steps:\n        - uses: domdfcoding/octocheese@master\n          with:\n\
+    \            pypi_name: \"domdf_python_tools\"\n          env:\n            GITHUB_TOKEN:\
+    \ ${{secrets.GITHUB_TOKEN}}\n\n\nInstalling as a Python package and script\n------------------------------------------\n\
+    \n.. start installation\n\n``OctoCheese`` can be installed from PyPI.\n\nTo install\
+    \ with ``pip``:\n\n.. code-block:: bash\n\n\t$ python -m pip install octocheese\n\
+    \n.. end installation\n"
   description_content_type: text/x-rst
   docs_url: null
   download_url: ''
@@ -76,9 +82,12 @@ info:
     last_day: -1
     last_month: -1
     last_week: -1
+  dynamic: null
   home_page: https://github.com/domdfcoding/octocheese
-  keywords: ''
-  license: GNU Lesser General Public License v3 or later (LGPLv3+)
+  keywords: github,github-action,pypi
+  license: LGPL-3.0-or-later
+  license_expression: null
+  license_files: null
   maintainer: ''
   maintainer_email: ''
   name: octocheese
@@ -86,27 +95,40 @@ info:
   platform: Windows
   project_url: https://pypi.org/project/octocheese/
   project_urls:
-    Documentation: https://octocheese.readthedocs.io
+    Documentation: https://octocheese.readthedocs.io/en/latest
     Homepage: https://github.com/domdfcoding/octocheese
-    Issue_Tracker: https://github.com/domdfcoding/octocheese/issues
-    Source_Code: https://github.com/domdfcoding/octocheese
-  release_url: https://pypi.org/project/octocheese/0.1.0/
+    Issue Tracker: https://github.com/domdfcoding/octocheese/issues
+    Source Code: https://github.com/domdfcoding/octocheese
+  provides_extra: null
+  release_url: https://pypi.org/project/octocheese/0.7.0/
   requires_dist:
-  - domdf-python-tools (>=0.8.0)
-  - dulwich (!=0.20.7,!=0.20.8,>=0.20.5)
-  - PyGithub (>=1.51)
-  - requests (>=2.24.0)
-  requires_python: '>=3.6.1'
+  - apeye-core>=1.0.0
+  - click>=7.1.2
+  - consolekit>=0.8.2
+  - domdf-python-tools>=1.5.0
+  - dulwich!=0.20.7,!=0.20.8,>=0.20.5
+  - github3-py>=1.3.0
+  - github3-utils>=0.3.0
+  - packaging>=21.3
+  - pypi-json>=0.2.1
+  - shippinglabel>=0.6.1
+  - typing-extensions>=3.7.4.3
+  requires_python: '>=3.6'
   summary: 🐙 🧀 – Copy PyPI Packages to GitHub Releases
-  version: 0.1.0
+  version: 0.7.0
   yanked: false
   yanked_reason: null
-last_serial: 10039271
-ownership: null
+last_serial: 21571217
+ownership:
+  organization: null
+  roles:
+  - role: Owner
+    user: DomDF
 releases:
   0.0.2:
   - comment_text: ''
     digests:
+      blake2b_256: bf73eb602da8836598e3806db37efc2a7111407bef0762dd016ac042eb96d9bc
       md5: 84fe78203f40133975f8ee0a85c2833f
       sha256: ab4f758b7763401cb811ed968b136e802103ce83c54e1fdab032be97ff5b0f0b
     downloads: -1
@@ -124,6 +146,7 @@ releases:
     yanked_reason: null
   - comment_text: ''
     digests:
+      blake2b_256: fafbd301018af3f22bdbf34b624037e851561914c244a26add8278e4e7273578
       md5: 1cc6a5bf794a2e268e9e9ee48192f911
       sha256: 7612b9c3f432595e1b1f051f52547a6b517a3a066d6f4c9d27462db7a55fc28e
     downloads: -1
@@ -142,6 +165,7 @@ releases:
   0.1.0:
   - comment_text: ''
     digests:
+      blake2b_256: 36cf50c8ae6b56a65dd9633908892027becf1a4fbb1e80c41273ea34a6b47bbe
       md5: ff3f5cc33aff6a2312c72c0ad71daa7b
       sha256: af0a8e70074170e4629f38fae980cbd0e29d75d631d34c6a95720bbac9d5f96b
     downloads: -1
@@ -159,6 +183,7 @@ releases:
     yanked_reason: null
   - comment_text: ''
     digests:
+      blake2b_256: 2442477933be102ce175c2443dc57963c886db899d48fbc9d04b5caa41b0daa9
       md5: 7f3a5db13f5bf72a5ec751ead0d5f54a
       sha256: 8c307cf3d8abd721061594e9bd520ee370f0a193c8d8c12964f7167a52a09be7
     downloads: -1
@@ -177,6 +202,7 @@ releases:
   0.2.0:
   - comment_text: ''
     digests:
+      blake2b_256: 25616d716232c334d5b590e03bfb7f2c7f91ccf957dfb51e59fdff5deba7fe93
       md5: ce2db98d9473729057887268303022bd
       sha256: fa0b4de6fda5492fc72a09c33160f8f2b43a1bc12c6ab88b94942ae7bf1bec3b
     downloads: -1
@@ -194,6 +220,7 @@ releases:
     yanked_reason: null
   - comment_text: ''
     digests:
+      blake2b_256: b51924265ef0059c96cce0c9aa4ccd5f3e8f90019e523a00dee4c0b02c1ce837
       md5: 818be24c95a5dc992a0aaa31abd20381
       sha256: 96e280c4172684ee31185c7a31ab007830edd851c1569b88798cc4baa7257203
     downloads: -1
@@ -212,6 +239,7 @@ releases:
   0.2.1:
   - comment_text: ''
     digests:
+      blake2b_256: d37a850900c5fecb6597d7ab3ee2fa5a9789dda2e85339f0ec9c41cb687e9d61
       md5: 35ee87475fcec869d39ddf229604b695
       sha256: 3df4e8fa6202bc1f4d9f2b1b20579fc4f078f2c2dc47f9278b24b9ea6a0c2718
     downloads: -1
@@ -229,6 +257,7 @@ releases:
     yanked_reason: null
   - comment_text: ''
     digests:
+      blake2b_256: ed5dc4937e98c935bd58fb699ac4aca047cc6b539e6cca97b3bdff4c3f4fc35a
       md5: 1f8d7d0361f661aef18f0f7a2e855e80
       sha256: efa09b03f3604726666e250a4ddb9054ab0105e19f0dc894a989b97af744fb52
     downloads: -1
@@ -247,6 +276,7 @@ releases:
   0.3.0:
   - comment_text: ''
     digests:
+      blake2b_256: aba010bf3e2073f39811d2e1991a749a298b5b0be2be494aaaeb162bcd597e20
       md5: 2e6498050495444a1484288b3075020c
       sha256: 9145f293b89ac1ae82512431493ed2cc14ba798552735aa35357678470cca873
     downloads: -1
@@ -264,6 +294,7 @@ releases:
     yanked_reason: null
   - comment_text: ''
     digests:
+      blake2b_256: 632100e0f8aaf00fdc76b4ecfb4af56d35825caae1adf99809556a3d07cab789
       md5: a07e5c32c401dbd82546e6dd44cd599e
       sha256: 36ebd97201bb4b4c3d2745ecad48c4680957a48f74d466e2a7920e5d528fe670
     downloads: -1
@@ -279,39 +310,189 @@ releases:
     url: https://files.pythonhosted.org/packages/63/21/00e0f8aaf00fdc76b4ecfb4af56d35825caae1adf99809556a3d07cab789/octocheese-0.3.0.tar.gz
     yanked: false
     yanked_reason: null
+  0.4.0:
+  - comment_text: ''
+    digests:
+      blake2b_256: 94b9e2ea7cc67dbc29ea2a310c7994dbb9f2a7ebe6c069e9889f234fce9c6072
+      md5: 903348634173f7cc320f18df23881b37
+      sha256: aa68192b415cc50a77200c139fc643d3793b7a3ec7775e158985387822aedecf
+    downloads: -1
+    filename: octocheese-0.4.0-py3-none-any.whl
+    has_sig: false
+    md5_digest: 903348634173f7cc320f18df23881b37
+    packagetype: bdist_wheel
+    python_version: py3
+    requires_python: '>=3.6'
+    size: 35099
+    upload_time: '2022-04-26T07:21:55'
+    upload_time_iso_8601: '2022-04-26T07:21:55.955962Z'
+    url: https://files.pythonhosted.org/packages/94/b9/e2ea7cc67dbc29ea2a310c7994dbb9f2a7ebe6c069e9889f234fce9c6072/octocheese-0.4.0-py3-none-any.whl
+    yanked: false
+    yanked_reason: null
+  - comment_text: ''
+    digests:
+      blake2b_256: 7f3a990adec05b1b8249abea8582af424cdeef7c3ce2be726bbf2dc2cd6cb094
+      md5: 8aab86b0de09c34bf4b7662f4fd1e4d0
+      sha256: 8a16bc5ea6de40793c063be51636dc0ce88d9b95448e824120f293b480a5f8e7
+    downloads: -1
+    filename: octocheese-0.4.0.tar.gz
+    has_sig: false
+    md5_digest: 8aab86b0de09c34bf4b7662f4fd1e4d0
+    packagetype: sdist
+    python_version: source
+    requires_python: '>=3.6'
+    size: 11297
+    upload_time: '2022-04-26T07:21:57'
+    upload_time_iso_8601: '2022-04-26T07:21:57.538019Z'
+    url: https://files.pythonhosted.org/packages/7f/3a/990adec05b1b8249abea8582af424cdeef7c3ce2be726bbf2dc2cd6cb094/octocheese-0.4.0.tar.gz
+    yanked: false
+    yanked_reason: null
+  0.5.0:
+  - comment_text: ''
+    digests:
+      blake2b_256: 8ee34f28d4d792bb0d19d2d2c2e920d3b29f2caea5c2d8d53eae0ee3e55c7b44
+      md5: 3724c78e261ab939e1891d93274e7264
+      sha256: 2c33a5e83a9bde7674906e548a98cfbc87c090a4abeca8300720a698e30a6ac7
+    downloads: -1
+    filename: octocheese-0.5.0-py3-none-any.whl
+    has_sig: false
+    md5_digest: 3724c78e261ab939e1891d93274e7264
+    packagetype: bdist_wheel
+    python_version: py3
+    requires_python: '>=3.6'
+    size: 35198
+    upload_time: '2022-05-14T14:29:03'
+    upload_time_iso_8601: '2022-05-14T14:29:03.349548Z'
+    url: https://files.pythonhosted.org/packages/8e/e3/4f28d4d792bb0d19d2d2c2e920d3b29f2caea5c2d8d53eae0ee3e55c7b44/octocheese-0.5.0-py3-none-any.whl
+    yanked: false
+    yanked_reason: null
+  - comment_text: ''
+    digests:
+      blake2b_256: dea18cbb73e75eb8bfb605097a9042dbdce10b95a9d433b77460803658458152
+      md5: 8c05bb482296aa3d65ecf460fc1b14b7
+      sha256: f0c6556c285f12d62dfc057e171f37625809717d636db6e1c0d5043079e36081
+    downloads: -1
+    filename: octocheese-0.5.0.tar.gz
+    has_sig: false
+    md5_digest: 8c05bb482296aa3d65ecf460fc1b14b7
+    packagetype: sdist
+    python_version: source
+    requires_python: '>=3.6'
+    size: 11405
+    upload_time: '2022-05-14T14:29:04'
+    upload_time_iso_8601: '2022-05-14T14:29:04.970587Z'
+    url: https://files.pythonhosted.org/packages/de/a1/8cbb73e75eb8bfb605097a9042dbdce10b95a9d433b77460803658458152/octocheese-0.5.0.tar.gz
+    yanked: false
+    yanked_reason: null
+  0.6.0:
+  - comment_text: ''
+    digests:
+      blake2b_256: 2be4dea8a64ba6ccbdc10c8400c7443a70ce7d5bf54be3a3e4a571b7f15004ca
+      md5: 25019fd99212eee5486d17b37709b181
+      sha256: 491e0e113c51bf63dccc8ad20413083d00b9661183f8e95afa5a73c97d7d3755
+    downloads: -1
+    filename: octocheese-0.6.0-py3-none-any.whl
+    has_sig: false
+    md5_digest: 25019fd99212eee5486d17b37709b181
+    packagetype: bdist_wheel
+    python_version: py3
+    requires_python: '>=3.6'
+    size: 35215
+    upload_time: '2023-05-23T12:54:24'
+    upload_time_iso_8601: '2023-05-23T12:54:24.931568Z'
+    url: https://files.pythonhosted.org/packages/2b/e4/dea8a64ba6ccbdc10c8400c7443a70ce7d5bf54be3a3e4a571b7f15004ca/octocheese-0.6.0-py3-none-any.whl
+    yanked: false
+    yanked_reason: null
+  - comment_text: ''
+    digests:
+      blake2b_256: bc6f41bcdb6bf3389cd01e439cbc9620d10d5d4566d1e680e0cef15126ac3d59
+      md5: b493e13f0843d3fa774f3d9870b537a6
+      sha256: 4b25f9aeaa8d0353e9d54dacf957adcd922eef1009b54b2c2b6677fd793a1f41
+    downloads: -1
+    filename: octocheese-0.6.0.tar.gz
+    has_sig: false
+    md5_digest: b493e13f0843d3fa774f3d9870b537a6
+    packagetype: sdist
+    python_version: source
+    requires_python: '>=3.6'
+    size: 11347
+    upload_time: '2023-05-23T12:54:26'
+    upload_time_iso_8601: '2023-05-23T12:54:26.955834Z'
+    url: https://files.pythonhosted.org/packages/bc/6f/41bcdb6bf3389cd01e439cbc9620d10d5d4566d1e680e0cef15126ac3d59/octocheese-0.6.0.tar.gz
+    yanked: false
+    yanked_reason: null
+  0.7.0:
+  - comment_text: ''
+    digests:
+      blake2b_256: 8a47748f0ad817feb4ecd37e785bdf419f6dc0cf6c245a748163ccd0beb9cc10
+      md5: be6c37af63679474592aa26f326c83e1
+      sha256: 55e98d51a47a01e895e0b0590e7d66a5bd3dc76586f1ed622bb0b267c76b90ec
+    downloads: -1
+    filename: octocheese-0.7.0-py3-none-any.whl
+    has_sig: false
+    md5_digest: be6c37af63679474592aa26f326c83e1
+    packagetype: bdist_wheel
+    python_version: py3
+    requires_python: '>=3.6'
+    size: 35334
+    upload_time: '2024-01-24T17:08:53'
+    upload_time_iso_8601: '2024-01-24T17:08:53.278205Z'
+    url: https://files.pythonhosted.org/packages/8a/47/748f0ad817feb4ecd37e785bdf419f6dc0cf6c245a748163ccd0beb9cc10/octocheese-0.7.0-py3-none-any.whl
+    yanked: false
+    yanked_reason: null
+  - comment_text: ''
+    digests:
+      blake2b_256: afa4f1aa5185cd8d83bc7b8c594df31d7bd25c831a831a4c2dec3198994a5804
+      md5: a2ee30a78588de64eb08c5b073930a97
+      sha256: 49c7485e92176fdca2376cdd13dca5c8ef966d664773c95f84ec1fe9964c1195
+    downloads: -1
+    filename: octocheese-0.7.0.tar.gz
+    has_sig: false
+    md5_digest: a2ee30a78588de64eb08c5b073930a97
+    packagetype: sdist
+    python_version: source
+    requires_python: '>=3.6'
+    size: 11383
+    upload_time: '2024-01-24T17:08:54'
+    upload_time_iso_8601: '2024-01-24T17:08:54.466001Z'
+    url: https://files.pythonhosted.org/packages/af/a4/f1aa5185cd8d83bc7b8c594df31d7bd25c831a831a4c2dec3198994a5804/octocheese-0.7.0.tar.gz
+    yanked: false
+    yanked_reason: null
 urls:
 - comment_text: ''
   digests:
-    md5: ff3f5cc33aff6a2312c72c0ad71daa7b
-    sha256: af0a8e70074170e4629f38fae980cbd0e29d75d631d34c6a95720bbac9d5f96b
+    blake2b_256: 8a47748f0ad817feb4ecd37e785bdf419f6dc0cf6c245a748163ccd0beb9cc10
+    md5: be6c37af63679474592aa26f326c83e1
+    sha256: 55e98d51a47a01e895e0b0590e7d66a5bd3dc76586f1ed622bb0b267c76b90ec
   downloads: -1
-  filename: octocheese-0.1.0-py3-none-any.whl
+  filename: octocheese-0.7.0-py3-none-any.whl
   has_sig: false
-  md5_digest: ff3f5cc33aff6a2312c72c0ad71daa7b
+  md5_digest: be6c37af63679474592aa26f326c83e1
   packagetype: bdist_wheel
   python_version: py3
-  requires_python: '>=3.6.1'
-  size: 13388
-  upload_time: '2020-10-30T22:50:57'
-  upload_time_iso_8601: '2020-10-30T22:50:57.303625Z'
-  url: https://files.pythonhosted.org/packages/36/cf/50c8ae6b56a65dd9633908892027becf1a4fbb1e80c41273ea34a6b47bbe/octocheese-0.1.0-py3-none-any.whl
+  requires_python: '>=3.6'
+  size: 35334
+  upload_time: '2024-01-24T17:08:53'
+  upload_time_iso_8601: '2024-01-24T17:08:53.278205Z'
+  url: https://files.pythonhosted.org/packages/8a/47/748f0ad817feb4ecd37e785bdf419f6dc0cf6c245a748163ccd0beb9cc10/octocheese-0.7.0-py3-none-any.whl
   yanked: false
   yanked_reason: null
 - comment_text: ''
   digests:
-    md5: 7f3a5db13f5bf72a5ec751ead0d5f54a
-    sha256: 8c307cf3d8abd721061594e9bd520ee370f0a193c8d8c12964f7167a52a09be7
+    blake2b_256: afa4f1aa5185cd8d83bc7b8c594df31d7bd25c831a831a4c2dec3198994a5804
+    md5: a2ee30a78588de64eb08c5b073930a97
+    sha256: 49c7485e92176fdca2376cdd13dca5c8ef966d664773c95f84ec1fe9964c1195
   downloads: -1
-  filename: octocheese-0.1.0.tar.gz
+  filename: octocheese-0.7.0.tar.gz
   has_sig: false
-  md5_digest: 7f3a5db13f5bf72a5ec751ead0d5f54a
+  md5_digest: a2ee30a78588de64eb08c5b073930a97
   packagetype: sdist
   python_version: source
-  requires_python: '>=3.6.1'
-  size: 10868
-  upload_time: '2020-10-30T22:50:58'
-  upload_time_iso_8601: '2020-10-30T22:50:58.846069Z'
-  url: https://files.pythonhosted.org/packages/24/42/477933be102ce175c2443dc57963c886db899d48fbc9d04b5caa41b0daa9/octocheese-0.1.0.tar.gz
+  requires_python: '>=3.6'
+  size: 11383
+  upload_time: '2024-01-24T17:08:54'
+  upload_time_iso_8601: '2024-01-24T17:08:54.466001Z'
+  url: https://files.pythonhosted.org/packages/af/a4/f1aa5185cd8d83bc7b8c594df31d7bd25c831a831a4c2dec3198994a5804/octocheese-0.7.0.tar.gz
   yanked: false
   yanked_reason: null
 vulnerabilities: []
