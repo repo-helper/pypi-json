@@ -45,7 +45,14 @@ from packaging.utils import canonicalize_name, parse_wheel_filename
 from packaging.version import Version
 
 # this package
-from pypi_json.typehints import DistributionPackageDict, FileURL, ProjectInfoDict, Self, VulnerabilityInfoDict
+from pypi_json.typehints import (
+		DistributionPackageDict,
+		FileURL,
+		OwnershipInfoDict,
+		ProjectInfoDict,
+		Self,
+		VulnerabilityInfoDict
+		)
 
 # from urllib.parse import urlparse, urlunparse
 
@@ -115,6 +122,13 @@ class ProjectMetadata(NamedTuple):
 	Details of vulnerabilities from the `Open Source Vulnerabilities project <https://osv.dev/>`_.
 
 	(*New in version 0.2.0*)
+	"""
+
+	ownership: Optional[OwnershipInfoDict] = None
+	"""
+	Information about the project's roles and organization membership.
+
+	(*New in version 0.5.0*)
 	"""
 
 	@property

@@ -45,7 +45,14 @@ else:  # pragma: no cover
 	except ImportError:
 		TypedDict = dict
 
-__all__ = ["DistributionPackageDict", "FileURL", "ProjectInfoDict", "VulnerabilityInfoDict", "Self"]
+__all__ = [
+		"DistributionPackageDict",
+		"FileURL",
+		"OwnershipInfoDict",
+		"ProjectInfoDict",
+		"RoleInfoDict",
+		"VulnerabilityInfoDict",
+		]
 
 Self = typing.TypeVar("Self")
 
@@ -227,3 +234,28 @@ class VulnerabilityInfoDict(TypedDict):
 
 	#: The version(s) the vulnerability was fixed in, e.g. ``["3.3.2"]``.
 	fixed_in: typing.List[str]
+
+
+class RoleInfoDict(TypedDict):
+	"""
+	A user's role in an organisation.
+
+	.. versionadded:: 0.2.0
+	"""
+
+	role: str
+	user: str
+
+
+class OwnershipInfoDict(TypedDict):
+	"""
+	Information about the project's roles and organization membership.
+
+	.. versionadded:: 0.2.0
+	"""
+
+	#: The URL slug of the organization that owns the project (e.g. ``"pypa"``), or :py:obj:`None` if the project is not owned by an organization.
+	organization: typing.Optional[str]
+
+	#: A list of dictionaries representing the project's owners and maintainers. This is an empty list when the project has no roles assigned.
+	roles: typing.List[RoleInfoDict]
