@@ -240,7 +240,7 @@ class RoleInfoDict(TypedDict):
 	"""
 	A user's role in an organisation.
 
-	.. versionadded:: 0.2.0
+	.. versionadded:: 0.5.0
 	"""
 
 	role: str
@@ -251,7 +251,7 @@ class OwnershipInfoDict(TypedDict):
 	"""
 	Information about the project's roles and organization membership.
 
-	.. versionadded:: 0.2.0
+	.. versionadded:: 0.5.0
 	"""
 
 	#: The URL slug of the organization that owns the project (e.g. ``"pypa"``), or :py:obj:`None` if the project is not owned by an organization.
